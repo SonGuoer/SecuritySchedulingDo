@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nandi.securityschedulingdo.R;
+import com.nandi.securityschedulingdo.bean.LocationPoint;
 
 /**
  * 显示基础信息页面
@@ -16,7 +17,14 @@ import com.nandi.securityschedulingdo.R;
 
 public class BasicInformationFragment extends Fragment {
 
+    public static BasicInformationFragment newInstance(LocationPoint baseMessage) {
+        BasicInformationFragment fragment = new BasicInformationFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("baseMessage",baseMessage);
 
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override

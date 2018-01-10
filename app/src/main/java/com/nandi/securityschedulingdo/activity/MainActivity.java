@@ -1,5 +1,6 @@
 package com.nandi.securityschedulingdo.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,6 +36,7 @@ import com.nandi.securityschedulingdo.Constant;
 import com.nandi.securityschedulingdo.R;
 import com.nandi.securityschedulingdo.adapter.AreaAdapter;
 import com.nandi.securityschedulingdo.bean.AreaName;
+import com.nandi.securityschedulingdo.bean.LocationPoint;
 import com.nandi.securityschedulingdo.utils.JsonFormat;
 import com.nandi.securityschedulingdo.utils.SharedUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -42,6 +45,7 @@ import com.zhy.http.okhttp.callback.StringCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
     private List<AreaName> areaNames;
     private int typeId;
     private int areaId;
-    private ImageView search;
+    private LinearLayout search;
     private int level;
     private TextView cityName;
+    private LatLng point;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,17 +74,19 @@ public class MainActivity extends AppCompatActivity {
         level = (int) SharedUtils.getShare(this, Constant.LEVEL, 1);
         areaId = (int) SharedUtils.getShare(this, Constant.AREA_ID, 0);
         initMapView();
-        initOverLay();
-//        mBaidumap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
-//            @Override
-//            public boolean onMarkerClick(Marker marker) {
-//                System.out.println("marker = " + marker.getZIndex());
-//                Bundle extraInfo = marker.getExtraInfo();
-//                extraInfo.getInt("KEY");
-//                System.out.println("extraInfo = " + extraInfo.getInt("KEY"));
-//                return false;
-//            }
-//        });
+        mBaidumap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                System.out.println("marker = " + marker.getZIndex());
+                Bundle extraInfo = marker.getExtraInfo();
+                LocationPoint message = (LocationPoint) extraInfo.getSerializable("message");
+                System.out.println("extraInfo = " + message.toString());
+                Intent intent = new Intent(MainActivity.this,MessageActivity.class);
+                intent.putExtra("baseMessage",message);
+                startActivity(intent);
+                return false;
+            }
+        });
     }
 
     private void areaRequest() {
@@ -110,12 +117,13 @@ public class MainActivity extends AppCompatActivity {
                                 if (level > 1) {
                                     for (int i = 0; i < areaNames.size(); i++) {
                                         if (areaId == areaNames.get(i).getId()) {
-                                          areaName.setSelection(i);
-                                          areaName.setEnabled(false);
+                                            areaName.setSelection(i);
+                                            areaName.setEnabled(false);
                                         }
                                     }
                                 }
-
+                            } else {
+                                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -126,8 +134,33 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    private void initOverLay() {
+    private void initOverLay(List<LocationPoint> locationPoints) {
         // TODO: 2018/1/8 打点
+        //创建OverlayOptions的集合
+        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+        //构建Marker图标
+        BitmapDescriptor bitmap = BitmapDescriptorFactory
+                .fromResource(R.mipmap.ic_place);
+
+        //设置坐标点
+        for (int i = 0; i < locationPoints.size(); i++) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("message", locationPoints.get(i));
+            double disLon = locationPoints.get(i).getDis_lon();
+            double disLat = locationPoints.get(i).getDis_lat();
+            point = new LatLng(disLat, disLon);
+            //创建OverlayOptions属性
+            OverlayOptions option = new MarkerOptions()
+                    .position(point)
+                    .icon(bitmap).extraInfo(bundle);
+
+            //将OverlayOptions添加到list
+            options.add(option);
+        }
+        //在地图上批量添加
+        System.out.println("options = " + options.size());
+        mBaidumap.addOverlays(options);
+
     }
 
     /**
@@ -140,9 +173,14 @@ public class MainActivity extends AppCompatActivity {
         initListener();
         mBaidumap = mMapView.getMap();
         mBaidumap.setMyLocationEnabled(true);
+        mBaidumap.setCompassPosition(new android.graphics.Point(100, 380));
+        // 改变地图状态，使地图显示在恰当的缩放大小
+        MapStatus mMapStatus = new MapStatus.Builder().zoom(8).build();
+        MapStatusUpdate mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        mBaidumap.setMapStatus(mMapStatusUpdate);
         // 构造定位数据
         MyLocationData locData = new MyLocationData.Builder()
-                .accuracy(10)
+                .accuracy(0)
                 // 此处设置开发者获取到的方向信息，顺时针0-360
                 .direction(0)
                 .latitude(29.56667)
@@ -153,12 +191,11 @@ public class MainActivity extends AppCompatActivity {
         mBaidumap.setMyLocationData(locData);
 
         // 设置定位图层的配置（定位模式，是否允许方向信息，用户自定义定位图标）
-        mCurrentMarker = BitmapDescriptorFactory
-                .fromResource(R.mipmap.ic_launcher);
-        MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.COMPASS, true, mCurrentMarker);
+        mCurrentMarker = BitmapDescriptorFactory.fromResource(0);
+        MyLocationConfiguration config = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, false, mCurrentMarker);
         mBaidumap.setMyLocationConfiguration(config);
         // 当不需要定位图层时关闭定位图层
-        mBaidumap.setMyLocationEnabled(false);
+        mBaidumap.setMyLocationEnabled(true);
     }
 
     private void initListener() {
@@ -196,7 +233,36 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/sreachDisasters/" + areaId + "/" + typeId)
+                        .build()
+                        .execute(new StringCallback() {
 
+
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+
+                            }
+
+                            @Override
+                            public void onResponse(String response, int id) {
+                                System.out.println("response = " + response);
+                                JSONObject js;
+                                try {
+                                    js = new JSONObject(response);
+                                    JSONObject meta = new JSONObject(js.optString("meta"));
+                                    Boolean success = meta.optBoolean("success");
+                                    String message = meta.optString("message");
+                                    if (success) {
+                                        String data = js.optString("data");
+                                        List<LocationPoint> locationPoints = JsonFormat.stringToList(data, LocationPoint.class);
+                                        initOverLay(locationPoints);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        });
             }
         });
     }

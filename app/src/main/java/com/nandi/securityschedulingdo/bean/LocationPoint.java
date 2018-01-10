@@ -1,531 +1,537 @@
 package com.nandi.securityschedulingdo.bean;
 
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * Created by qingsong on 2018/1/9.
  */
 
-public class LocationPoint {
+public class LocationPoint implements Serializable {
+    private static final long serialVersionUID = 9527l;
+    /**
+     * deal_status : 1
+     * scale : 16
+     * stable_level : 43
+     * main_object : 居民
+     * area_id : 548
+     * has_mobile : 1
+     * dis_before : 225.000000
+     * dis_after : 565.000000
+     * remark : 0
+     * dis_cause : 77,79
+     * imperil_house : 0
+     * dis_location : 重庆省（市）武隆区（县）羊角乡（镇）
+     * deal_type : 1
+     * state_time : 0
+     * id : 79204
+     * operation : 1
+     * dis_stratum : 0
+     * deal_idea : 已处理
+     * dis_no : 5002321070240101
+     * imperil_families : 0
+     * village : 朝阳村
+     * imperil_level : 16
+     * defense_level : 37
+     * status_no : 0
+     * dis_lat : 29.39141944
+     * dis_area : 0
+     * dis_time : 2003-06-25 00:00:00
+     * dis_state : 1
+     * dis_y : 36461734
+     * bulu : 1
+     * dis_name : 羊角镇滑坡
+     * dis_radius : 2
+     * group_no : 云子社
+     * come_time : 2013-09-01
+     * qcqfry_tel : 15702312977
+     * dis_surface_type : 34
+     * dis_x : 3252720
+     * warn_mobile : 15702312704
+     * zsry_tel : 18623194406
+     * dis_type : 1
+     * imperil_man : 51
+     * imperil_money : 500.000000
+     * video_name : 5002321070240101.mp4
+     * dis_lon : 107.60594167
+     * dis_slope : 111
+     * imperil_area : 0
+     * dis_volume : 0
+     */
 
-    private MetaBean meta;
-    private List<DataBean> data;
+    private int deal_status;
+    private int scale;
+    private int stable_level;
+    private String main_object;
+    private int area_id;
+    private int has_mobile;
+    private String dis_before;
+    private String dis_after;
+    private String remark;
+    private String dis_cause;
+    private int imperil_house;
+    private String dis_location;
+    private int deal_type;
+    private String state_time;
+    private int id;
+    private int operation;
+    private String dis_stratum;
+    private String deal_idea;
+    private String dis_no;
+    private int imperil_families;
+    private String village;
+    private int imperil_level;
+    private int defense_level;
+    private int status_no;
+    private double dis_lat;
+    private String dis_area;
+    private String dis_time;
+    private int dis_state;
+    private String dis_y;
+    private int bulu;
+    private String dis_name;
+    private int dis_radius;
+    private String group_no;
+    private String come_time;
+    private String qcqfry_tel;
+    private String dis_surface_type;
+    private String dis_x;
+    private String warn_mobile;
+    private String zsry_tel;
+    private int dis_type;
+    private int imperil_man;
+    private String imperil_money;
+    private String video_name;
+    private double dis_lon;
+    private String dis_slope;
+    private String imperil_area;
+    private String dis_volume;
 
-    public MetaBean getMeta() {
-        return meta;
+    public int getDeal_status() {
+        return deal_status;
     }
 
-    public void setMeta(MetaBean meta) {
-        this.meta = meta;
+    public void setDeal_status(int deal_status) {
+        this.deal_status = deal_status;
     }
 
-    public List<DataBean> getData() {
-        return data;
+    public int getScale() {
+        return scale;
     }
 
-    public void setData(List<DataBean> data) {
-        this.data = data;
+    public void setScale(int scale) {
+        this.scale = scale;
     }
 
-    public static class MetaBean {
-        /**
-         * success : true
-         * message : ok
-         */
-
-        private boolean success;
-        private String message;
-
-        public boolean isSuccess() {
-            return success;
-        }
-
-        public void setSuccess(boolean success) {
-            this.success = success;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
+    public int getStable_level() {
+        return stable_level;
     }
 
-    public static class DataBean {
-        /**
-         * id : 1
-         * disNo : 5002322010050101
-         * disName : 双桂湾滑坡
-         * disType : null
-         * disState : 1
-         * disLocation : 重庆市武隆县和顺乡青木池村八一社
-         * disLon : 107.41833333
-         * disLat : 29.38333333
-         * disX : 3251614
-         * disY : 36443058
-         * disCause : null
-         * disTime : 2001-09-03 00:00:00
-         * disStratum : 0
-         * disSurfaceType : 28
-         * disSlope : 25
-         * disArea : 2.400000
-         * disVolume : 12.000000
-         * disBefore : 293.000000
-         * disAfter : 174.000000
-         * imperilFamilies : 20
-         * imperilMan : 50
-         * imperilHouse : 0
-         * imperilArea : 0
-         * mainObject : 居民
-         * imperilMoney : 210.000000
-         * stableLevel : 43
-         * imperilLevel : 19
-         * dealIdea : null
-         * defenseLevel : 37
-         * areaId : 530
-         * qcqfryTel :
-         * zsryTel : 18584579966
-         * warnMobile :
-         * hasMobile : 1
-         * disRadius : 2
-         * village : null
-         * bulu : 1
-         * groupNo : null
-         * scale : 18
-         * stateTime : 0
-         * comeTime : 2013-09-01
-         * operation : 1
-         * statusNo : 0
-         * videoName :
-         * dealType : 1
-         * dealStatus : 1
-         * remark : null
-         */
-
-        private int id;
-        private String disNo;
-        private String disName;
-        private Object disType;
-        private int disState;
-        private String disLocation;
-        private double disLon;
-        private double disLat;
-        private String disX;
-        private String disY;
-        private String disCause;
-        private String disTime;
-        private String disStratum;
-        private String disSurfaceType;
-        private String disSlope;
-        private String disArea;
-        private String disVolume;
-        private String disBefore;
-        private String disAfter;
-        private int imperilFamilies;
-        private int imperilMan;
-        private int imperilHouse;
-        private String imperilArea;
-        private String mainObject;
-        private String imperilMoney;
-        private int stableLevel;
-        private int imperilLevel;
-        private String dealIdea;
-        private int defenseLevel;
-        private int areaId;
-        private String qcqfryTel;
-        private String zsryTel;
-        private String warnMobile;
-        private int hasMobile;
-        private int disRadius;
-        private String village;
-        private int bulu;
-        private String groupNo;
-        private int scale;
-        private String stateTime;
-        private String comeTime;
-        private int operation;
-        private int statusNo;
-        private String videoName;
-        private int dealType;
-        private int dealStatus;
-        private Object remark;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getDisNo() {
-            return disNo;
-        }
-
-        public void setDisNo(String disNo) {
-            this.disNo = disNo;
-        }
-
-        public String getDisName() {
-            return disName;
-        }
-
-        public void setDisName(String disName) {
-            this.disName = disName;
-        }
-
-        public Object getDisType() {
-            return disType;
-        }
-
-        public void setDisType(Object disType) {
-            this.disType = disType;
-        }
-
-        public int getDisState() {
-            return disState;
-        }
-
-        public void setDisState(int disState) {
-            this.disState = disState;
-        }
-
-        public String getDisLocation() {
-            return disLocation;
-        }
-
-        public void setDisLocation(String disLocation) {
-            this.disLocation = disLocation;
-        }
-
-        public double getDisLon() {
-            return disLon;
-        }
-
-        public void setDisLon(double disLon) {
-            this.disLon = disLon;
-        }
-
-        public double getDisLat() {
-            return disLat;
-        }
-
-        public void setDisLat(double disLat) {
-            this.disLat = disLat;
-        }
-
-        public String getDisX() {
-            return disX;
-        }
-
-        public void setDisX(String disX) {
-            this.disX = disX;
-        }
-
-        public String getDisY() {
-            return disY;
-        }
-
-        public void setDisY(String disY) {
-            this.disY = disY;
-        }
-
-        public String getDisCause() {
-            return disCause;
-        }
-
-        public void setDisCause(String disCause) {
-            this.disCause = disCause;
-        }
-
-        public String getDisTime() {
-            return disTime;
-        }
-
-        public void setDisTime(String disTime) {
-            this.disTime = disTime;
-        }
-
-        public String getDisStratum() {
-            return disStratum;
-        }
-
-        public void setDisStratum(String disStratum) {
-            this.disStratum = disStratum;
-        }
-
-        public String getDisSurfaceType() {
-            return disSurfaceType;
-        }
-
-        public void setDisSurfaceType(String disSurfaceType) {
-            this.disSurfaceType = disSurfaceType;
-        }
-
-        public String getDisSlope() {
-            return disSlope;
-        }
-
-        public void setDisSlope(String disSlope) {
-            this.disSlope = disSlope;
-        }
-
-        public String getDisArea() {
-            return disArea;
-        }
-
-        public void setDisArea(String disArea) {
-            this.disArea = disArea;
-        }
-
-        public String getDisVolume() {
-            return disVolume;
-        }
-
-        public void setDisVolume(String disVolume) {
-            this.disVolume = disVolume;
-        }
-
-        public String getDisBefore() {
-            return disBefore;
-        }
-
-        public void setDisBefore(String disBefore) {
-            this.disBefore = disBefore;
-        }
-
-        public String getDisAfter() {
-            return disAfter;
-        }
-
-        public void setDisAfter(String disAfter) {
-            this.disAfter = disAfter;
-        }
-
-        public int getImperilFamilies() {
-            return imperilFamilies;
-        }
-
-        public void setImperilFamilies(int imperilFamilies) {
-            this.imperilFamilies = imperilFamilies;
-        }
-
-        public int getImperilMan() {
-            return imperilMan;
-        }
-
-        public void setImperilMan(int imperilMan) {
-            this.imperilMan = imperilMan;
-        }
-
-        public int getImperilHouse() {
-            return imperilHouse;
-        }
-
-        public void setImperilHouse(int imperilHouse) {
-            this.imperilHouse = imperilHouse;
-        }
-
-        public String getImperilArea() {
-            return imperilArea;
-        }
-
-        public void setImperilArea(String imperilArea) {
-            this.imperilArea = imperilArea;
-        }
-
-        public String getMainObject() {
-            return mainObject;
-        }
-
-        public void setMainObject(String mainObject) {
-            this.mainObject = mainObject;
-        }
-
-        public String getImperilMoney() {
-            return imperilMoney;
-        }
-
-        public void setImperilMoney(String imperilMoney) {
-            this.imperilMoney = imperilMoney;
-        }
-
-        public int getStableLevel() {
-            return stableLevel;
-        }
-
-        public void setStableLevel(int stableLevel) {
-            this.stableLevel = stableLevel;
-        }
-
-        public int getImperilLevel() {
-            return imperilLevel;
-        }
-
-        public void setImperilLevel(int imperilLevel) {
-            this.imperilLevel = imperilLevel;
-        }
-
-        public String getDealIdea() {
-            return dealIdea;
-        }
-
-        public void setDealIdea(String dealIdea) {
-            this.dealIdea = dealIdea;
-        }
-
-        public int getDefenseLevel() {
-            return defenseLevel;
-        }
-
-        public void setDefenseLevel(int defenseLevel) {
-            this.defenseLevel = defenseLevel;
-        }
-
-        public int getAreaId() {
-            return areaId;
-        }
-
-        public void setAreaId(int areaId) {
-            this.areaId = areaId;
-        }
-
-        public String getQcqfryTel() {
-            return qcqfryTel;
-        }
-
-        public void setQcqfryTel(String qcqfryTel) {
-            this.qcqfryTel = qcqfryTel;
-        }
-
-        public String getZsryTel() {
-            return zsryTel;
-        }
-
-        public void setZsryTel(String zsryTel) {
-            this.zsryTel = zsryTel;
-        }
-
-        public String getWarnMobile() {
-            return warnMobile;
-        }
-
-        public void setWarnMobile(String warnMobile) {
-            this.warnMobile = warnMobile;
-        }
-
-        public int getHasMobile() {
-            return hasMobile;
-        }
-
-        public void setHasMobile(int hasMobile) {
-            this.hasMobile = hasMobile;
-        }
-
-        public int getDisRadius() {
-            return disRadius;
-        }
-
-        public void setDisRadius(int disRadius) {
-            this.disRadius = disRadius;
-        }
-
-        public String getVillage() {
-            return village;
-        }
-
-        public void setVillage(String village) {
-            this.village = village;
-        }
-
-        public int getBulu() {
-            return bulu;
-        }
-
-        public void setBulu(int bulu) {
-            this.bulu = bulu;
-        }
-
-        public String getGroupNo() {
-            return groupNo;
-        }
-
-        public void setGroupNo(String groupNo) {
-            this.groupNo = groupNo;
-        }
-
-        public int getScale() {
-            return scale;
-        }
-
-        public void setScale(int scale) {
-            this.scale = scale;
-        }
-
-        public String getStateTime() {
-            return stateTime;
-        }
-
-        public void setStateTime(String stateTime) {
-            this.stateTime = stateTime;
-        }
-
-        public String getComeTime() {
-            return comeTime;
-        }
-
-        public void setComeTime(String comeTime) {
-            this.comeTime = comeTime;
-        }
-
-        public int getOperation() {
-            return operation;
-        }
-
-        public void setOperation(int operation) {
-            this.operation = operation;
-        }
-
-        public int getStatusNo() {
-            return statusNo;
-        }
-
-        public void setStatusNo(int statusNo) {
-            this.statusNo = statusNo;
-        }
-
-        public String getVideoName() {
-            return videoName;
-        }
-
-        public void setVideoName(String videoName) {
-            this.videoName = videoName;
-        }
-
-        public int getDealType() {
-            return dealType;
-        }
-
-        public void setDealType(int dealType) {
-            this.dealType = dealType;
-        }
-
-        public int getDealStatus() {
-            return dealStatus;
-        }
-
-        public void setDealStatus(int dealStatus) {
-            this.dealStatus = dealStatus;
-        }
-
-        public Object getRemark() {
-            return remark;
-        }
-
-        public void setRemark(Object remark) {
-            this.remark = remark;
-        }
+    public void setStable_level(int stable_level) {
+        this.stable_level = stable_level;
+    }
+
+    public String getMain_object() {
+        return main_object;
+    }
+
+    public void setMain_object(String main_object) {
+        this.main_object = main_object;
+    }
+
+    public int getArea_id() {
+        return area_id;
+    }
+
+    public void setArea_id(int area_id) {
+        this.area_id = area_id;
+    }
+
+    public int getHas_mobile() {
+        return has_mobile;
+    }
+
+    public void setHas_mobile(int has_mobile) {
+        this.has_mobile = has_mobile;
+    }
+
+    public String getDis_before() {
+        return dis_before;
+    }
+
+    public void setDis_before(String dis_before) {
+        this.dis_before = dis_before;
+    }
+
+    public String getDis_after() {
+        return dis_after;
+    }
+
+    public void setDis_after(String dis_after) {
+        this.dis_after = dis_after;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getDis_cause() {
+        return dis_cause;
+    }
+
+    public void setDis_cause(String dis_cause) {
+        this.dis_cause = dis_cause;
+    }
+
+    public int getImperil_house() {
+        return imperil_house;
+    }
+
+    public void setImperil_house(int imperil_house) {
+        this.imperil_house = imperil_house;
+    }
+
+    public String getDis_location() {
+        return dis_location;
+    }
+
+    public void setDis_location(String dis_location) {
+        this.dis_location = dis_location;
+    }
+
+    public int getDeal_type() {
+        return deal_type;
+    }
+
+    public void setDeal_type(int deal_type) {
+        this.deal_type = deal_type;
+    }
+
+    public String getState_time() {
+        return state_time;
+    }
+
+    public void setState_time(String state_time) {
+        this.state_time = state_time;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getOperation() {
+        return operation;
+    }
+
+    public void setOperation(int operation) {
+        this.operation = operation;
+    }
+
+    public String getDis_stratum() {
+        return dis_stratum;
+    }
+
+    public void setDis_stratum(String dis_stratum) {
+        this.dis_stratum = dis_stratum;
+    }
+
+    public String getDeal_idea() {
+        return deal_idea;
+    }
+
+    public void setDeal_idea(String deal_idea) {
+        this.deal_idea = deal_idea;
+    }
+
+    public String getDis_no() {
+        return dis_no;
+    }
+
+    public void setDis_no(String dis_no) {
+        this.dis_no = dis_no;
+    }
+
+    public int getImperil_families() {
+        return imperil_families;
+    }
+
+    public void setImperil_families(int imperil_families) {
+        this.imperil_families = imperil_families;
+    }
+
+    public String getVillage() {
+        return village;
+    }
+
+    public void setVillage(String village) {
+        this.village = village;
+    }
+
+    public int getImperil_level() {
+        return imperil_level;
+    }
+
+    public void setImperil_level(int imperil_level) {
+        this.imperil_level = imperil_level;
+    }
+
+    public int getDefense_level() {
+        return defense_level;
+    }
+
+    public void setDefense_level(int defense_level) {
+        this.defense_level = defense_level;
+    }
+
+    public int getStatus_no() {
+        return status_no;
+    }
+
+    public void setStatus_no(int status_no) {
+        this.status_no = status_no;
+    }
+
+    public double getDis_lat() {
+        return dis_lat;
+    }
+
+    public void setDis_lat(double dis_lat) {
+        this.dis_lat = dis_lat;
+    }
+
+    public String getDis_area() {
+        return dis_area;
+    }
+
+    public void setDis_area(String dis_area) {
+        this.dis_area = dis_area;
+    }
+
+    public String getDis_time() {
+        return dis_time;
+    }
+
+    public void setDis_time(String dis_time) {
+        this.dis_time = dis_time;
+    }
+
+    public int getDis_state() {
+        return dis_state;
+    }
+
+    public void setDis_state(int dis_state) {
+        this.dis_state = dis_state;
+    }
+
+    public String getDis_y() {
+        return dis_y;
+    }
+
+    public void setDis_y(String dis_y) {
+        this.dis_y = dis_y;
+    }
+
+    public int getBulu() {
+        return bulu;
+    }
+
+    public void setBulu(int bulu) {
+        this.bulu = bulu;
+    }
+
+    public String getDis_name() {
+        return dis_name;
+    }
+
+    public void setDis_name(String dis_name) {
+        this.dis_name = dis_name;
+    }
+
+    public int getDis_radius() {
+        return dis_radius;
+    }
+
+    public void setDis_radius(int dis_radius) {
+        this.dis_radius = dis_radius;
+    }
+
+    public String getGroup_no() {
+        return group_no;
+    }
+
+    public void setGroup_no(String group_no) {
+        this.group_no = group_no;
+    }
+
+    public String getCome_time() {
+        return come_time;
+    }
+
+    public void setCome_time(String come_time) {
+        this.come_time = come_time;
+    }
+
+    public String getQcqfry_tel() {
+        return qcqfry_tel;
+    }
+
+    public void setQcqfry_tel(String qcqfry_tel) {
+        this.qcqfry_tel = qcqfry_tel;
+    }
+
+    public String getDis_surface_type() {
+        return dis_surface_type;
+    }
+
+    public void setDis_surface_type(String dis_surface_type) {
+        this.dis_surface_type = dis_surface_type;
+    }
+
+    public String getDis_x() {
+        return dis_x;
+    }
+
+    public void setDis_x(String dis_x) {
+        this.dis_x = dis_x;
+    }
+
+    public String getWarn_mobile() {
+        return warn_mobile;
+    }
+
+    public void setWarn_mobile(String warn_mobile) {
+        this.warn_mobile = warn_mobile;
+    }
+
+    public String getZsry_tel() {
+        return zsry_tel;
+    }
+
+    public void setZsry_tel(String zsry_tel) {
+        this.zsry_tel = zsry_tel;
+    }
+
+    public int getDis_type() {
+        return dis_type;
+    }
+
+    public void setDis_type(int dis_type) {
+        this.dis_type = dis_type;
+    }
+
+    public int getImperil_man() {
+        return imperil_man;
+    }
+
+    public void setImperil_man(int imperil_man) {
+        this.imperil_man = imperil_man;
+    }
+
+    public String getImperil_money() {
+        return imperil_money;
+    }
+
+    public void setImperil_money(String imperil_money) {
+        this.imperil_money = imperil_money;
+    }
+
+    public String getVideo_name() {
+        return video_name;
+    }
+
+    public void setVideo_name(String video_name) {
+        this.video_name = video_name;
+    }
+
+    public double getDis_lon() {
+        return dis_lon;
+    }
+
+    public void setDis_lon(double dis_lon) {
+        this.dis_lon = dis_lon;
+    }
+
+    public String getDis_slope() {
+        return dis_slope;
+    }
+
+    public void setDis_slope(String dis_slope) {
+        this.dis_slope = dis_slope;
+    }
+
+    public String getImperil_area() {
+        return imperil_area;
+    }
+
+    public void setImperil_area(String imperil_area) {
+        this.imperil_area = imperil_area;
+    }
+
+    public String getDis_volume() {
+        return dis_volume;
+    }
+
+    public void setDis_volume(String dis_volume) {
+        this.dis_volume = dis_volume;
+    }
+
+    @Override
+    public String toString() {
+        return "LocationPoint{" +
+                "deal_status=" + deal_status +
+                ", scale=" + scale +
+                ", stable_level=" + stable_level +
+                ", main_object='" + main_object + '\'' +
+                ", area_id=" + area_id +
+                ", has_mobile=" + has_mobile +
+                ", dis_before='" + dis_before + '\'' +
+                ", dis_after='" + dis_after + '\'' +
+                ", remark='" + remark + '\'' +
+                ", dis_cause='" + dis_cause + '\'' +
+                ", imperil_house=" + imperil_house +
+                ", dis_location='" + dis_location + '\'' +
+                ", deal_type=" + deal_type +
+                ", state_time='" + state_time + '\'' +
+                ", id=" + id +
+                ", operation=" + operation +
+                ", dis_stratum='" + dis_stratum + '\'' +
+                ", deal_idea='" + deal_idea + '\'' +
+                ", dis_no='" + dis_no + '\'' +
+                ", imperil_families=" + imperil_families +
+                ", village='" + village + '\'' +
+                ", imperil_level=" + imperil_level +
+                ", defense_level=" + defense_level +
+                ", status_no=" + status_no +
+                ", dis_lat=" + dis_lat +
+                ", dis_area='" + dis_area + '\'' +
+                ", dis_time='" + dis_time + '\'' +
+                ", dis_state=" + dis_state +
+                ", dis_y='" + dis_y + '\'' +
+                ", bulu=" + bulu +
+                ", dis_name='" + dis_name + '\'' +
+                ", dis_radius=" + dis_radius +
+                ", group_no='" + group_no + '\'' +
+                ", come_time='" + come_time + '\'' +
+                ", qcqfry_tel='" + qcqfry_tel + '\'' +
+                ", dis_surface_type='" + dis_surface_type + '\'' +
+                ", dis_x='" + dis_x + '\'' +
+                ", warn_mobile='" + warn_mobile + '\'' +
+                ", zsry_tel='" + zsry_tel + '\'' +
+                ", dis_type=" + dis_type +
+                ", imperil_man=" + imperil_man +
+                ", imperil_money='" + imperil_money + '\'' +
+                ", video_name='" + video_name + '\'' +
+                ", dis_lon=" + dis_lon +
+                ", dis_slope='" + dis_slope + '\'' +
+                ", imperil_area='" + imperil_area + '\'' +
+                ", dis_volume='" + dis_volume + '\'' +
+                '}';
     }
 }

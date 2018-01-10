@@ -43,13 +43,13 @@
             android:value="6xP6EMZchtfjUIAOX3W6sGQMokLKgLO5" />
 
         <activity android:name=".activity.LoginActivity">
-
-        </activity>
-        <activity android:name=".activity.MessageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.MessageActivity">
+
         </activity>
     </application>
 

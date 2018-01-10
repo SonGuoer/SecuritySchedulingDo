@@ -8,11 +8,13 @@ import android.os.Bundle;
 
 import com.nandi.securityschedulingdo.adapter.MessageAdapter;
 import com.nandi.securityschedulingdo.R;
+import com.nandi.securityschedulingdo.bean.LocationPoint;
 import com.nandi.securityschedulingdo.fragment.BasicInformationFragment;
 import com.nandi.securityschedulingdo.fragment.PersonnelInformationFragment;
 import com.nandi.securityschedulingdo.fragment.PictureFragment;
 import com.nandi.securityschedulingdo.fragment.VideoFragment;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
@@ -27,6 +29,8 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         vpMessage = findViewById(R.id.vp_message);
         tabMessage = findViewById(R.id.tab_message);
+        LocationPoint baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
+
         initFragment();
     }
 
@@ -34,8 +38,8 @@ public class MessageActivity extends AppCompatActivity {
         list = new ArrayList<>();
         list.add(new BasicInformationFragment());
         list.add(new PictureFragment());
-        list.add(new PersonnelInformationFragment());
         list.add(new VideoFragment());
+        list.add(new PersonnelInformationFragment());
         MessageAdapter messageAdapter = new MessageAdapter(getSupportFragmentManager(), list);
         vpMessage.setAdapter(messageAdapter);
         tabMessage.setupWithViewPager(vpMessage);

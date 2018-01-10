@@ -1,54 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.nandi.securityschedulingdo.activity.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:paddingLeft="5dp">
-
-        <TextView
-            android:id="@+id/city_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="区县名称："
-            />
-
-        <Spinner
-            android:id="@+id/area_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dropDownWidth="70dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="类型：" />
-
-        <Spinner
-            android:id="@+id/type_point"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/dangerType" />
-
-        <ImageView
-            android:id="@+id/search_point"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_search" />
-    </LinearLayout>
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:clickable="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/city_chooese"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/city_name"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/city_chooese"
+                android:text="区县" />
+
+            <Spinner
+                android:id="@+id/area_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:dropDownWidth="70dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/city_chooese"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="类型" />
+
+            <Spinner
+                android:id="@+id/type_point"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:entries="@array/dangerType" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/search_point"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="@drawable/city_chooese"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/ic_search" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:text="搜索" />
 
 
-</LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

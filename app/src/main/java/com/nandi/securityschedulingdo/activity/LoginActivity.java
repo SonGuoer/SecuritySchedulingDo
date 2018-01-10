@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.nandi.securityschedulingdo.Constant;
 import com.nandi.securityschedulingdo.utils.AutoComplete;
 import com.nandi.securityschedulingdo.utils.DESUtil;
 import com.nandi.securityschedulingdo.R;
+import com.nandi.securityschedulingdo.utils.InputUtil;
 import com.nandi.securityschedulingdo.utils.SharedUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -26,7 +28,7 @@ import okhttp3.Call;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView autoTv;
+    private EditText autoTv;
     private Button loginBtn;
     private EditText password;
     private Context context;
@@ -56,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        AutoComplete.initAutoComplete(context, "history", autoTv);
     }
 
     private boolean isNotNull() {
@@ -77,6 +78,17 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            // 获得当前得到焦点的View，一般情况下就是EditText（特殊情况就是轨迹求或者实体案件会移动焦点）
+            View v = getCurrentFocus();
+            if (InputUtil.isShouldHideInput(v, ev)) {
+                InputUtil.hideSoftInput(v.getWindowToken(), context);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
     private void loginRequest() throws Exception {
         OkHttpUtils.post().url(getString(R.string.base_url) + "/system/login")
                 .addParams("username", autoTv.getText().toString().trim())
@@ -107,7 +119,6 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent = new Intent(context, MainActivity.class);
                                 startActivity(intent);
                                 finish();
-                                AutoComplete.saveHistory(context, "history", autoTv);
                             } else {
                                 Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
                             }
