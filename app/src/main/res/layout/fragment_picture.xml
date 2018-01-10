@@ -20,15 +20,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/dividerColor"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/panorama"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp" />
+                    style="@style/DividerTextView"
+                    android:text="@string/panorama" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_panorama"
@@ -45,15 +38,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/dividerColor"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/plan"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp" />
+                    style="@style/DividerTextView"
+                    android:text="@string/plan" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_plan"
@@ -70,15 +56,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/dividerColor"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/feature"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp" />
+                    style="@style/DividerTextView"
+                    android:text="@string/feature" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_feature"
@@ -95,15 +74,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/dividerColor"
-                    android:paddingTop="5dp"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="@string/profile"
-                    android:textColor="@color/text_color"
-                    android:textSize="18sp" />
+                    style="@style/DividerTextView"
+                    android:text="@string/profile" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_profile"

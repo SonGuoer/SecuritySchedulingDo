@@ -17,4 +17,9 @@
     <string name="plan">平面图</string>
     <string name="feature">特征图</string>
     <string name="profile">剖面图</string>
+    <string name="basic">基本信息</string>
+    <string name="disaster">灾害影响</string>
+    <string name="geography">地理信息</string>
+    <string name="ohter">其他</string>
+
 </resources>
