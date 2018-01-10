@@ -22,6 +22,8 @@ public class MessageActivity extends AppCompatActivity {
     private ArrayList<Fragment> list;
     private ViewPager vpMessage;
     private TabLayout tabMessage;
+    private LocationPoint baseMessage;
+    private BasicInformationFragment basicInformationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +31,15 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         vpMessage = findViewById(R.id.vp_message);
         tabMessage = findViewById(R.id.tab_message);
-        LocationPoint baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
-
+        baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
+        System.out.println("baseMessage = " + baseMessage.toString());
+        basicInformationFragment = BasicInformationFragment.newInstance(baseMessage);
         initFragment();
     }
 
     private void initFragment() {
         list = new ArrayList<>();
-        list.add(new BasicInformationFragment());
+        list.add(basicInformationFragment);
         list.add(new PictureFragment());
         list.add(new VideoFragment());
         list.add(new PersonnelInformationFragment());
