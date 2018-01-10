@@ -6,12 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.nandi.securityschedulingdo.activity.MessageActivity">
+
+    <include
+        android:id="@+id/topbar"
+        layout="@layout/layout_topbar"/>
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
-        app:tabIndicatorColor="#f00"
+        app:tabIndicatorColor="@color/white"
         app:tabIndicatorHeight="4dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorAccent"

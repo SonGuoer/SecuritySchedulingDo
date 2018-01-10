@@ -10,14 +10,23 @@ import android.view.ViewGroup;
 import com.nandi.securityschedulingdo.R;
 
 /**
+ * 显示基础信息页面
  * Created by qingsong on 2018/1/8.
  */
 
 public class BasicInformationFragment extends Fragment {
+
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_information_basic, container, false);
         return view;
     }
+
+
+
+
+
 }

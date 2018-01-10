@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.nandi.securityschedulingdo.R;
+import com.nandi.securityschedulingdo.bean.PictureInfo;
 
 import java.util.List;
 
@@ -15,13 +17,14 @@ import java.util.List;
  * @author qingsong  on 2017/10/26.
  */
 
-
 public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHolder> {
     private Context mContext;
     public PictureAdapter.OnItemClickListener mOnItemClickListener;
+    private String[] mList;
 
-    public PictureAdapter(Context context) {
-        mContext = context;
+    public PictureAdapter(Context context, String[] list) {
+        this.mContext = context;
+        this.mList = list;
     }
 
     public interface OnItemClickListener {
@@ -41,6 +44,11 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(PictureAdapter.MyViewHolder holder, final int position) {
+        Glide.with(mContext).load(mContext.getString(R.string.base_url) + "/down/img?path="
+                + mContext.getString(R.string.picPath) + "uploadImg/" +mList[position])
+                .placeholder(R.drawable.downloading)
+                .error(R.drawable.download_pass)
+                .into(holder.picture);
 
         if (mOnItemClickListener != null) {
             holder.picture.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +62,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.length > 0 ? mList.length : 0;
     }
 
 
@@ -63,7 +71,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.MyViewHo
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            itemView.findViewById(R.id.iv_picture);
+            picture = itemView.findViewById(R.id.iv_picture);
         }
     }
 }

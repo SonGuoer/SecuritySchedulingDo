@@ -10,4 +10,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="base_url">http://183.230.182.149:19088/rend</string>
+
+    <string name="picPath">d:/cmd/img/</string>
+
+    <string name="panorama">全景图</string>
+    <string name="plan">平面图</string>
+    <string name="feature">特征图</string>
+    <string name="profile">剖面图</string>
 </resources>
