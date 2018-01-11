@@ -39,8 +39,7 @@
                 android:id="@+id/area_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/right_chooese"
-                android:dropDownWidth="70dp" />
+                android:background="@drawable/right_chooese" />
         </LinearLayout>
 
         <LinearLayout
