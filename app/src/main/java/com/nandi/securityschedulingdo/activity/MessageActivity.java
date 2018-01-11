@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nandi.securityschedulingdo.adapter.MessageAdapter;
 import com.nandi.securityschedulingdo.R;
@@ -19,6 +22,8 @@ import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
 
+    private ImageView iv_back;
+    private TextView tv_title;
     private ArrayList<Fragment> list;
     private ViewPager vpMessage;
     private TabLayout tabMessage;
@@ -29,12 +34,20 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        iv_back = findViewById(R.id.iv_back);
+        tv_title = findViewById(R.id.tv_title);
         vpMessage = findViewById(R.id.vp_message);
         tabMessage = findViewById(R.id.tab_message);
         baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
         System.out.println("baseMessage = " + baseMessage.toString());
         basicInformationFragment = BasicInformationFragment.newInstance(baseMessage);
         initFragment();
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initFragment() {

@@ -4,9 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.SpannedString;
 import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,6 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //去掉Activity上面的状态栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         context = this;
         initView();
@@ -46,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
         autoTv = findViewById(R.id.userName);
         password = findViewById(R.id.password);
         loginBtn = findViewById(R.id.email_sign_in_button);
+        setHintSize(autoTv, "请输入账号");
+        setHintSize(password, "请输入密码");
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +68,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * 设置EditText的hint字体大小
+     * @param et  控件
+     * @param str 提示内容
+     */
+    private void setHintSize(EditText et, String str){
+        SpannableString ss = new SpannableString(str);
+        AbsoluteSizeSpan ass = new AbsoluteSizeSpan(15,true);
+        ss.setSpan(ass, 0, ss.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        et.setHint(new SpannedString(ss));
     }
 
     private boolean isNotNull() {
