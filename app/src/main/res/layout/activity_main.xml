@@ -14,80 +14,80 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:gravity="center_vertical"
+        android:padding="10dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_weight="4"
             android:background="@drawable/city_chooese"
-            android:gravity="center_vertical">
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/city_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/city_chooese"
+                android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="区县" />
+                android:text="区县"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
 
             <Spinner
                 android:id="@+id/area_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@drawable/right_chooese"
                 android:dropDownWidth="70dp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_weight="4"
             android:background="@drawable/city_chooese"
-            android:gravity="center_vertical">
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="5dp"
-                android:text="类型" />
+                android:text="类型"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
 
             <Spinner
                 android:id="@+id/type_point"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
+                android:background="@drawable/right_chooese"
                 android:entries="@array/dangerType" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/search_point"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="@drawable/city_chooese"
-            android:gravity="center_vertical">
+            android:layout_weight="2"
+            android:gravity="center"
+            android:background="@drawable/city_chooese">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="5dp"
-                android:src="@mipmap/ic_search" />
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/search"/>
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:background="@color/white"
                 android:gravity="center"
-                android:text="搜索" />
-
-
+                android:text="搜索"
+                android:textSize="16sp"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </RelativeLayout>
