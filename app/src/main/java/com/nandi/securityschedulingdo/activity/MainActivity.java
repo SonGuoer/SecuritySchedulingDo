@@ -1,5 +1,6 @@
 package com.nandi.securityschedulingdo.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -65,11 +66,16 @@ public class MainActivity extends AppCompatActivity {
     private int level;
     private TextView cityName;
     private LatLng point;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressDialog = new ProgressDialog(this, ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("正在搜索");
         areaRequest();
         level = (int) SharedUtils.getShare(this, Constant.LEVEL, 1);
         areaId = (int) SharedUtils.getShare(this, Constant.AREA_ID, 0);
@@ -81,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 Bundle extraInfo = marker.getExtraInfo();
                 LocationPoint message = (LocationPoint) extraInfo.getSerializable("message");
                 System.out.println("extraInfo = " + message.toString());
-                Intent intent = new Intent(MainActivity.this,MessageActivity.class);
-                intent.putExtra("baseMessage",message);
+                Intent intent = new Intent(MainActivity.this, MessageActivity.class);
+                intent.putExtra("baseMessage", message);
                 startActivity(intent);
                 return false;
             }
@@ -138,9 +144,10 @@ public class MainActivity extends AppCompatActivity {
         // TODO: 2018/1/8 打点
         //创建OverlayOptions的集合
         List<OverlayOptions> options = new ArrayList<OverlayOptions>();
-        //构建Marker图标
+//        //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
-                .fromResource(R.mipmap.ic_place);
+                .fromResource(R.mipmap.ic_lcpoint);
+
 
         //设置坐标点
         for (int i = 0; i < locationPoints.size(); i++) {
@@ -152,7 +159,8 @@ public class MainActivity extends AppCompatActivity {
             //创建OverlayOptions属性
             OverlayOptions option = new MarkerOptions()
                     .position(point)
-                    .icon(bitmap).extraInfo(bundle);
+                    .icon(bitmap)
+                    .extraInfo(bundle);
 
             //将OverlayOptions添加到list
             options.add(option);
@@ -160,9 +168,8 @@ public class MainActivity extends AppCompatActivity {
         //在地图上批量添加
         System.out.println("options = " + options.size());
         mBaidumap.addOverlays(options);
-
+        progressDialog.dismiss();
     }
-
     /**
      * 设置地图
      */
@@ -222,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
         typePoint.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                typeId = position;
+                typeId = position - 1;
             }
 
             @Override
@@ -233,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
+                mBaidumap.clear();
                 OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/sreachDisasters/" + areaId + "/" + typeId)
                         .build()
                         .execute(new StringCallback() {
@@ -240,11 +249,12 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(Call call, Exception e, int id) {
-
+                                progressDialog.dismiss();
                             }
 
                             @Override
                             public void onResponse(String response, int id) {
+
                                 System.out.println("response = " + response);
                                 JSONObject js;
                                 try {

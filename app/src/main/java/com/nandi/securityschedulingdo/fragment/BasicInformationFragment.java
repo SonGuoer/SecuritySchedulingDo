@@ -106,34 +106,34 @@ public class BasicInformationFragment extends Fragment {
     }
 
     private void initView() {
-        tvDangerName.setText(point.getDis_name());
-        tvDangerNum.setText(point.getDis_no());
-        tvDangerType.setText(getDangerType(point.getDis_type()));
-        tvCause.setText(getCause(point.getDis_cause()));
-        tvDangerLevel.setText(getDisLevel(point.getImperil_level()));
-        tvTime.setText(point.getDis_time());
-        tvStorageTime.setText(point.getCome_time());
-        tvDangerAddress.setText(point.getDis_location());
-        tvObject.setText(point.getMain_object());
-        tvPeopleNum.setText(point.getImperil_man()+"");
-        tvFamilyNum.setText(point.getImperil_families()+"");
-        tvHouseNum.setText(point.getImperil_house()+"");
-        tvThreatArea.setText(point.getImperil_area());
+        tvDangerName.setText(checkNull(point.getDis_name()));
+        tvDangerNum.setText(checkNull(point.getDis_no()));
+        tvDangerType.setText(checkNull(getDangerType(point.getDis_type())));
+        tvCause.setText(checkNull(getCause(point.getDis_cause())));
+        tvDangerLevel.setText(checkNull(getDisLevel(point.getImperil_level())));
+        tvTime.setText(checkNull(point.getDis_time()));
+        tvStorageTime.setText(checkNull(point.getCome_time()));
+        tvDangerAddress.setText(checkNull(point.getDis_location()));
+        tvObject.setText(checkNull(point.getMain_object()));
+        tvPeopleNum.setText(checkNull(point.getImperil_man()+""));
+        tvFamilyNum.setText(checkNull(point.getImperil_families()+""));
+        tvHouseNum.setText(checkNull(point.getImperil_house()+""));
+        tvThreatArea.setText(checkNull(point.getImperil_area()));
         tvAsset.setText(checkNull(point.getImperil_money()));
         tvVillage.setText(checkNull(point.getVillage()));
-        tvLongitude.setText(String.valueOf(point.getDis_lon()));
-        tvLatitude.setText(String.valueOf(point.getDis_lat()));
+        tvLongitude.setText(checkNull(String.valueOf(point.getDis_lon())));
+        tvLatitude.setText(checkNull(String.valueOf(point.getDis_lat())));
         tvSlope.setText(checkNull(point.getDis_slope()));
         tvAcreage.setText(checkNull(point.getDis_area()));
         tvVolume.setText(checkNull(point.getDis_volume()));
-        tvLeadEdge.setText(point.getDis_before());
-        tvBackEdge.setText(point.getDis_after());
+        tvLeadEdge.setText(checkNull(point.getDis_before()));
+        tvBackEdge.setText(checkNull(point.getDis_after()));
         tvNotes.setText(checkNull(point.getRemark()));
         tvDispose.setText(checkNull(point.getDeal_idea()));
         tvStability.setText(getStability(point.getStable_level()));
         tvPrevenLevel.setText(getLevel(point.getDefense_level()));
-        tvQuncePhone.setText(point.getQcqfry_tel());
-        tvDefendPhone.setText(point.getZsry_tel());
+        tvQuncePhone.setText(checkNull(point.getQcqfry_tel()));
+        tvDefendPhone.setText(checkNull(point.getZsry_tel()));
     }
     private String checkNull(String s){
 

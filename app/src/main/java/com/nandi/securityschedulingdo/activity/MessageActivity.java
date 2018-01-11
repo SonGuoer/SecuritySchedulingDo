@@ -29,6 +29,9 @@ public class MessageActivity extends AppCompatActivity {
     private TabLayout tabMessage;
     private LocationPoint baseMessage;
     private BasicInformationFragment basicInformationFragment;
+    private VideoFragment videoFragment;
+    private PictureFragment pictureFragment;
+    private PersonnelInformationFragment personnelFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,9 @@ public class MessageActivity extends AppCompatActivity {
         baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
         System.out.println("baseMessage = " + baseMessage.toString());
         basicInformationFragment = BasicInformationFragment.newInstance(baseMessage);
+        videoFragment = VideoFragment.newInstance(baseMessage.getVideo_name());
+        pictureFragment = PictureFragment.newInstance(baseMessage.getDis_no());
+        personnelFragment = PersonnelInformationFragment.newInstance(baseMessage.getDis_no());
         initFragment();
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,9 +59,13 @@ public class MessageActivity extends AppCompatActivity {
     private void initFragment() {
         list = new ArrayList<>();
         list.add(basicInformationFragment);
-        list.add(new PictureFragment());
-        list.add(new VideoFragment());
-        list.add(new PersonnelInformationFragment());
+
+        list.add(pictureFragment);
+        list.add(videoFragment);
+
+
+        list.add(personnelFragment);
+        vpMessage.setOffscreenPageLimit(4);
         MessageAdapter messageAdapter = new MessageAdapter(getSupportFragmentManager(), list);
         vpMessage.setAdapter(messageAdapter);
         tabMessage.setupWithViewPager(vpMessage);

@@ -54,11 +54,26 @@ public class PictureFragment extends Fragment {
 
     private String[] imgUrlArray;
     private List<PictureInfo> pictureInfos = new ArrayList<>();
+    private String disasterId;
 
+    public static PictureFragment newInstance(String id) {
+        PictureFragment fragment = new PictureFragment();
+        Bundle args = new Bundle();
+        args.putString("disasterId", id);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_picture, container, false);
+        disasterId = getArguments().getString("disasterId");
+        initView(view);
+        picRequest();
+        return view;
+    }
+
+    private void initView(View view) {
         rv_profile = view.findViewById(R.id.rv_profile);
         rv_panorama = view.findViewById(R.id.rv_panorama);
         rv_feature = view.findViewById(R.id.rv_feature);
@@ -67,12 +82,10 @@ public class PictureFragment extends Fragment {
         rv_panorama.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         rv_plan.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         rv_profile.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        picRequest();
-        return view;
     }
 
     private void picRequest() {
-        OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/selectFeaPicById/5002322010050101")
+        OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/selectFeaPicById/"+disasterId)
                 .build()
                 .execute(new StringCallback() {
                     @Override
