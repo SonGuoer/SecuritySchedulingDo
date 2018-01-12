@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         initView();
         if (Build.VERSION.SDK_INT >= 23) {
             int REQUEST_CODE_CONTACT = 101;
-            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.CALL_PHONE};
             //验证是否许可权限
             for (String str : permissions) {
                 if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {

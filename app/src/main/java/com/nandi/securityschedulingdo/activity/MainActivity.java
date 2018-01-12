@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         List<OverlayOptions> options = new ArrayList<OverlayOptions>();
 //        //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
-                .fromResource(R.mipmap.ic_lcpoint);
+                .fromResource(R.mipmap.ic_lc01);
 
 
         //设置坐标点
@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         mBaidumap.addOverlays(options);
         progressDialog.dismiss();
     }
+
     /**
      * 设置地图
      */
@@ -229,7 +230,11 @@ public class MainActivity extends AppCompatActivity {
         typePoint.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                typeId = position - 1;
+
+                typeId = position;
+                if (position == 0) {
+                    typeId = position - 1;
+                }
             }
 
             @Override

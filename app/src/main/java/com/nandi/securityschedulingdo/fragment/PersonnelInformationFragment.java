@@ -1,5 +1,9 @@
 package com.nandi.securityschedulingdo.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -57,7 +61,7 @@ public class PersonnelInformationFragment extends Fragment {
     }
 
     private void personnelRequest() {
-        OkHttpUtils.get().url(getString(R.string.base_url) + "/DisastersRelated/findFourPersonByDisNo/"+disasterId)
+        OkHttpUtils.get().url(getString(R.string.base_url) + "/DisastersRelated/findFourPersonByDisNo/" + disasterId)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -87,7 +91,7 @@ public class PersonnelInformationFragment extends Fragment {
                                     String tel = jsHumaninfo.optString("tel");
                                     String name = jsHumaninfo.optString("name");
                                     String url = jsHumaninfo.optString("url");
-                                    personnelInfo = new PersonnelInfo("群测群防", "MonitorManImg", tel, name, url);
+                                    personnelInfo = new PersonnelInfo("群测群防员", "MonitorManImg", tel, name, url);
                                     list.add(personnelInfo);
                                 }
                                 if (!TextUtils.isEmpty(areaAdmin)) {
@@ -115,9 +119,7 @@ public class PersonnelInformationFragment extends Fragment {
                                     personnelInfo = new PersonnelInfo("驻守地质队员", "AreaProfessor", tel, name, url);
                                     list.add(personnelInfo);
                                 }
-                                dataShow.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                                personnelAdapter = new PersonnelAdapter(getActivity(), list);
-                                dataShow.setAdapter(personnelAdapter);
+                                initAdapter(list);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -125,5 +127,31 @@ public class PersonnelInformationFragment extends Fragment {
 
                     }
                 });
+    }
+
+    private void initAdapter(final List<PersonnelInfo> list) {
+        dataShow.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        personnelAdapter = new PersonnelAdapter(getActivity(), list);
+        personnelAdapter.setOnItemClickListener(new PersonnelAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(final int position) {
+                new AlertDialog.Builder(getActivity()).
+                        setTitle("是否拨打" + list.get(position).getName() + "的电话").
+                        setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list.get(position).getTel()));
+                        startActivity(intent);
+                    }
+                }).show();
+
+            }
+        });
+        dataShow.setAdapter(personnelAdapter);
     }
 }

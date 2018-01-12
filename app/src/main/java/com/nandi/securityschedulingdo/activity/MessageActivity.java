@@ -37,17 +37,19 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
+        initView();
+        initFragment();
+
+    }
+
+    private void initView() {
         iv_back = findViewById(R.id.iv_back);
         tv_title = findViewById(R.id.tv_title);
         vpMessage = findViewById(R.id.vp_message);
         tabMessage = findViewById(R.id.tab_message);
         baseMessage = (LocationPoint) getIntent().getSerializableExtra("baseMessage");
         System.out.println("baseMessage = " + baseMessage.toString());
-        basicInformationFragment = BasicInformationFragment.newInstance(baseMessage);
-        videoFragment = VideoFragment.newInstance(baseMessage.getVideo_name());
-        pictureFragment = PictureFragment.newInstance(baseMessage.getDis_no());
-        personnelFragment = PersonnelInformationFragment.newInstance(baseMessage.getDis_no());
-        initFragment();
+        tv_title.setText(baseMessage.getDis_name());
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,13 +59,14 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void initFragment() {
+        basicInformationFragment = BasicInformationFragment.newInstance(baseMessage);
+        videoFragment = VideoFragment.newInstance(baseMessage.getVideo_name());
+        pictureFragment = PictureFragment.newInstance(baseMessage.getDis_no());
+        personnelFragment = PersonnelInformationFragment.newInstance(baseMessage.getDis_no());
         list = new ArrayList<>();
         list.add(basicInformationFragment);
-
         list.add(pictureFragment);
         list.add(videoFragment);
-
-
         list.add(personnelFragment);
         vpMessage.setOffscreenPageLimit(4);
         MessageAdapter messageAdapter = new MessageAdapter(getSupportFragmentManager(), list);

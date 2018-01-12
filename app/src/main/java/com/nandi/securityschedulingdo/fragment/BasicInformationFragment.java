@@ -235,25 +235,25 @@ public class BasicInformationFragment extends Fragment {
     private String getDangerType(int dis_type) {
         String result = null;
         switch (dis_type) {
-            case 0:
+            case 1:
                 result = "滑坡";
                 break;
-            case 1:
+            case 2:
                 result = "泥石流";
                 break;
-            case 2:
+            case 3:
                 result = "危岩";
                 break;
-            case 3:
+            case 4:
                 result = "不稳定斜坡";
                 break;
-            case 4:
+            case 5:
                 result = "地面塌陷";
                 break;
-            case 5:
+            case 6:
                 result = "地裂缝";
                 break;
-            case 6:
+            case 7:
                 result = "库岸";
                 break;
 
