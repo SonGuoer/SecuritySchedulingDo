@@ -10,7 +10,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
 
             <!--全景图-->
             <LinearLayout
@@ -23,10 +25,26 @@
                     style="@style/DividerTextView"
                     android:text="@string/panorama" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_panorama"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/DividerLine2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_panorama"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"/>
+
+                    <TextView
+                        style="@style/DividerLine2" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/DividerLine" />
             </LinearLayout>
 
             <!--平面图-->
@@ -41,10 +59,26 @@
                     style="@style/DividerTextView"
                     android:text="@string/plan" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_plan"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/DividerLine2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_plan"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"/>
+
+                    <TextView
+                        style="@style/DividerLine2" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/DividerLine" />
             </LinearLayout>
 
             <!--特征图-->
@@ -59,10 +93,26 @@
                     style="@style/DividerTextView"
                     android:text="@string/feature" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_feature"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/DividerLine2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_feature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"/>
+
+                    <TextView
+                        style="@style/DividerLine2" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/DividerLine" />
             </LinearLayout>
 
             <!--剖面图-->
@@ -71,16 +121,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ll_feature"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     style="@style/DividerTextView"
                     android:text="@string/profile" />
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_profile"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/DividerLine2" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_profile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9"/>
+
+                    <TextView
+                        style="@style/DividerLine2" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/DividerLine" />
             </LinearLayout>
 
         </LinearLayout>

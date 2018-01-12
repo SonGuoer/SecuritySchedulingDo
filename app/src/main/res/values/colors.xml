@@ -5,8 +5,9 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="dividerColor">	#F0F0F0</color>
+    <color name="dividerColor">	#E0E0E0</color>
     <color name="text_color">#4F4F4F</color>
     <color name="ac9455">#ac9455</color>
+    <color name="blue1">#65a7e7</color>
 
 </resources>
