@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -148,12 +149,19 @@ public class PictureFragment extends Fragment {
             public void onClick(int position) {
                 View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_enlarge_photo, null);
                 PhotoView photoView = (PhotoView) view.findViewById(R.id.pv_image);
+                ImageView photoBack = (ImageView) view.findViewById(R.id.photo_back);
                 Glide.with(getActivity()).load(getActivity().getString(R.string.base_url) + "/down/img?path="
                         + getActivity().getString(R.string.picPath) + "uploadImg/" + array[position])
                         .placeholder(R.drawable.downloading).error(R.drawable.download_pass).into(photoView);
-                new AlertDialog.Builder(getActivity(), R.style.Transparent)
+                final AlertDialog show = new AlertDialog.Builder(getActivity(), R.style.Transparent)
                         .setView(view)
                         .show();
+                photoBack.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        show.dismiss();
+                    }
+                });
             }
         });
     }

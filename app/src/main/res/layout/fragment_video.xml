@@ -6,21 +6,20 @@
     <RelativeLayout
         android:id="@+id/video_start"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
         android:layout_margin="10dp"
+        android:layout_height="200dp"
         android:background="@color/text_color">
-
         <TextView
             android:id="@+id/videoTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="暂无视频" />
-
+            android:text="暂无视频"
+            />
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@mipmap/ic_video" />
+            android:src="@mipmap/ic_video"/>
     </RelativeLayout>
 
 
