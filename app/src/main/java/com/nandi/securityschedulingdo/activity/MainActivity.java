@@ -144,10 +144,9 @@ public class MainActivity extends AppCompatActivity {
         // TODO: 2018/1/8 打点
         //创建OverlayOptions的集合
         List<OverlayOptions> options = new ArrayList<OverlayOptions>();
-//        //构建Marker图标
+        //构建Marker图标
         BitmapDescriptor bitmap = BitmapDescriptorFactory
                 .fromResource(R.mipmap.ic_lc01);
-
 
         //设置坐标点
         for (int i = 0; i < locationPoints.size(); i++) {
@@ -219,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     areaId = areaNames.get(position).getId();
                 }
-
             }
 
             @Override
@@ -250,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                 OkHttpUtils.get().url(getString(R.string.base_url) + "/tabDisastersInfo/sreachDisasters/" + areaId + "/" + typeId)
                         .build()
                         .execute(new StringCallback() {
-
 
                             @Override
                             public void onError(Call call, Exception e, int id) {

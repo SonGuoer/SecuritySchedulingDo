@@ -166,5 +166,4 @@ public class PictureFragment extends Fragment {
         });
     }
 
-
 }
